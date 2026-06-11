@@ -4,8 +4,11 @@
  (if (equal color-actual 'en-rojo)
    (list color-actual "cambiar-a-verde")))
 ;requerimiento 5
- (defun ciclos-por-tiempo-v2 (minutos)
+ (defun ciclos-por-tiempo-aux (minutos contador)
   (let ((duracion-ciclo 3.6))
     (if (< minutos duracion-ciclo)
-        0
-        (+ 1 (ciclos-por-tiempo-v2 (- minutos duracion-ciclo))))))
+        contador
+        (ciclos-por-tiempo-aux (- minutos duracion-ciclo) (+ contador 1)))))
+
+(defun ciclos-por-tiempo (minutos)
+  (ciclos-por-tiempo-aux minutos 0))
