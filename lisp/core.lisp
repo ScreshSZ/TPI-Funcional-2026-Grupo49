@@ -1,8 +1,20 @@
 ;requerimiento 1
 
 (defun transicion (color-actual cambiar-a)
- (if (equal color-actual 'en-rojo)
-   (list color-actual "cambiar-a-verde")))
+ (cond
+  ((equal cambiar-a 'rojo) (list color-actual "cambiar-a-rojo"))
+  ((equal cambiar-a 'amarillo) (list color-actual "cambiar-a-amarillo"))
+  ((equal cambiar-a 'verde) (list color-actual "cambiar-a-verde"))
+  (T (list color-actual 'accion-por-defecto))))
+
+requerimiento 2
+(defun timer (tiempo)
+ (setq x (mod tiempo 216))
+ (cond
+  ((and (>= x 0) (< x 90)) 'rojo)
+  ((and (>= x 90) (< x 96)) 'amarillo)
+  ((and (>= x 96) (< x 216)) 'verde)))
+
 
 ;requerimiento 4
 
