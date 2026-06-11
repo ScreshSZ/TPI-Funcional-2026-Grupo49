@@ -33,12 +33,17 @@
     )
     
 )
-;requerimiento 5
- (defun ciclos-por-tiempo-aux (minutos contador)
-  (let ((duracion-ciclo 3.6))
-    (if (< minutos duracion-ciclo)
-        contador
-        (ciclos-por-tiempo-aux (- minutos duracion-ciclo) (+ contador 1)))))
+; =====================================================================
+; REQUERIMIENTO 5: Planificación Temporal
+; =====================================================================
 
+; =====================================================================
+; FUNCION: ciclos-por-tiempo
+; NATURALEZA: Pura
+; ESTRATEGIA DE CONTROL: Orden Superior (truncate)
+; IMPACTO: No destructiva
+; =====================================================================
 (defun ciclos-por-tiempo (minutos)
-  (ciclos-por-tiempo-aux minutos 0))
+  (if (< minutos 0)
+      0
+      (truncate (/ minutos 3.6))))
