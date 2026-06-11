@@ -33,17 +33,14 @@
     )
     
 )
-; =====================================================================
-; REQUERIMIENTO 5: Planificación Temporal
-; =====================================================================
-
+;requerimiento 5
 ; =====================================================================
 ; FUNCION: ciclos-por-tiempo
 ; NATURALEZA: Pura
 ; ESTRATEGIA DE CONTROL: Orden Superior (truncate)
 ; IMPACTO: No destructiva
 ; =====================================================================
-(defun ciclos-por-tiempo (minutos)
-  (if (< minutos 0)
-      0
-      (truncate (/ minutos 3.6))))
+(defun ciclos-por-tiempo (minutos duracion-rojo duracion-amarillo duracion-verde)
+  (truncate (/ (* minutos 60) 
+               (duracion-ciclo duracion-rojo duracion-amarillo duracion-verde)))
+  )
