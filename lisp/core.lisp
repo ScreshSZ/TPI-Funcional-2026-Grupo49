@@ -34,7 +34,7 @@
 
 ;; ========================================================
 ;; FUNCIÓN: duracion-ciclo
-;; NATURALEZA: Pura (Dado la operacion, siempre retorna un numero)
+;; NATURALEZA: Pura 
 ;; ESTRATEGIA: Simple/Directa
 ;; IMPACTO: No destructiva
 ;; ========================================================
@@ -46,7 +46,7 @@
 
 ;; ========================================================
 ;; FUNCIÓN: recomendacion
-;; NATURALEZA: Pura (Dado la operacion, siempre retorna uno de 3 valores)
+;; NATURALEZA: Pura
 ;; ESTRATEGIA: Función predicado + decisión
 ;; IMPACTO: No destructiva
 ;; ========================================================
