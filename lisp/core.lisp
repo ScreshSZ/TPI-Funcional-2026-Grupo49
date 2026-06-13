@@ -70,3 +70,39 @@
   (truncate (/ (* minutos 60) 
                (duracion-ciclo duracion-rojo duracion-amarillo duracion-verde)))
   )
+
+;;; =========================================================================
+;;; REQUERIMIENTO 6: Informe de Distribución Temporal
+;;; NATURALEZA: Pura (Su salida depende exclusivamente de los argumentos).
+;;; ESTRATEGIA: Composición funcional (utiliza duracion-ciclo).
+;;; IMPACTO: No destructiva (No modifica el estado global).
+;;; =========================================================================
+
+(defun distribucion-porcentual (t-rojo t-amarillo t-verde)
+    (let ((total (duracion-ciclo t-rojo t-amarillo t-verde)))
+        (list 
+            (list 'ROJO (* (/ t-rojo total) 100))
+            (list 'VERDE (* (/ t-verde total) 100))
+            (list 'AMARILLO (* (/ t-amarillo total) 100))
+        )
+    )
+)
+
+;;; =========================================================================
+;;; REQUERIMIENTO 7: Aseguramiento de la Calidad (QA Global)
+;;; FUNCIÓN: ejecutar-qa-completo
+;;; NATURALEZA: Impura (Imprime por consola utilizando format y print).
+;;; =========================================================================
+
+(defun ejecutar-qa-completo ()
+    (progn
+        (format t "~%--- PRUEBAS REQ 6: DISTRIBUCION TEMPORAL ---~%")
+        (format t "Caso Normal (90s Rojo, 6s Amarillo, 120s Verde):~%")
+        (print (distribucion-porcentual 90 6 120))
+        
+        (format t "~%Caso Error (Letras en vez de numeros):~%")
+        (print (distribucion-porcentual A 6 120))
+        
+        'PRUEBAS-FINALIZADAS
+    )
+)
