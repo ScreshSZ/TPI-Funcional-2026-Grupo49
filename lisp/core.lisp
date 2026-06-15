@@ -100,19 +100,26 @@
 ;;; =========================================================================
 ;;; REQUERIMIENTO 6: Informe de Distribución Temporal
 ;;; NATURALEZA: Pura (Su salida depende exclusivamente de los argumentos).
-;;; ESTRATEGIA: Composición funcional (utiliza duracion-ciclo).
+;;; ESTRATEGIA: Composición funcional directa (utiliza duracion-ciclo).
 ;;; IMPACTO: No destructiva (No modifica el estado global).
 ;;; =========================================================================
 
 (defun distribucion-porcentual (t-rojo t-amarillo t-verde)
-    (let ((total (duracion-ciclo t-rojo t-amarillo t-verde)))
-        (list 
-            (list 'ROJO (* (/ t-rojo total) 100))
-            (list 'VERDE (* (/ t-verde total) 100))
-            (list 'AMARILLO (* (/ t-amarillo total) 100))
+    (cond
+        ((not (and (numberp t-rojo) (numberp t-amarillo) (numberp t-verde)))
+            "Error: Debe ingresar valores numericos en segundos.")
+        ((or (<= t-rojo 0) (<= t-amarillo 0) (<= t-verde 0))
+            "Error: Los tiempos ingresados deben ser mayores a cero.")
+        (T
+            (list 
+                (list 'ROJO (float (* (/ t-rojo (duracion-ciclo t-rojo t-amarillo t-verde)) 100)))
+                (list 'VERDE (float (* (/ t-verde (duracion-ciclo t-rojo t-amarillo t-verde)) 100)))
+                (list 'AMARILLO (float (* (/ t-amarillo (duracion-ciclo t-rojo t-amarillo t-verde)) 100)))
+            )
         )
     )
 )
+
 
 ;;; =========================================================================
 ;;; REQUERIMIENTO 7: Aseguramiento de la Calidad (QA Global)
