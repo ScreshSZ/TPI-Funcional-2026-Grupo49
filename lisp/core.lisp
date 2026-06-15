@@ -29,14 +29,14 @@
    (T 'verde))))
 
 ;requerimiento 3
+;(ql:quickload "local-time") correr el local time
 ;; ========================================================
 ;; FUNCIÓN: registrar-cambio
 ;; NATURALEZA: Impura (imprime información en la terminal)
 ;; ESTRATEGIA: Función Simple
 ;; IMPACTO: No destructiva
 ;; ========================================================
-(defun registrar-cambio (epoch color-anterior color-nuevo)
-  (print
+(defun registrarCambio (epoch color-anterior color-nuevo)
    (concatenate 'string
                 "["
                 (local-time:format-timestring
@@ -53,7 +53,6 @@
                 " a "
                 (symbol-name color-nuevo)
    )
-  )
 )
 
 
