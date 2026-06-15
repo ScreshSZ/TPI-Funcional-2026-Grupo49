@@ -28,6 +28,33 @@
    ((< instante 96) 'amarillo)
    (T 'verde))))
 
+;requerimiento 3
+;; ========================================================
+;; FUNCIÓN: registrar-cambio
+;; NATURALEZA: Impura (imprime información en la terminal)
+;; ESTRATEGIA: Función Simple
+;; IMPACTO: No destructiva
+;; ========================================================
+(defun registrar-cambio (epoch color-anterior color-nuevo)
+  (print
+   (concatenate 'string
+                "["
+                (local-time:format-timestring
+                 nil
+                 (local-time:unix-to-timestamp epoch)
+                 :format '((:year 4) "-"
+                           (:month 2) "-"
+                           (:day 2) " "
+                           (:hour 2) ":"
+                           (:min 2) ":"
+                           (:sec 2)))
+                "]: la luz ha cambiado de "
+                (symbol-name color-anterior)
+                " a "
+                (symbol-name color-nuevo)
+   )
+  )
+)
 
 
 ;requerimiento 4
@@ -101,8 +128,40 @@
         (print (distribucion-porcentual 90 6 120))
         
         (format t "~%Caso Error (Letras en vez de numeros):~%")
-        (print (distribucion-porcentual A 6 120))
+        (print (distribucion-porcentual 'A 6 120))
         
         'PRUEBAS-FINALIZADAS
     )
 )
+
+-- =========================================================================
+-- REQUERIMIENTO 1 haskell: Estados de Transición
+-- NATURALEZA: Pura (Su salida depende exclusivamente de los argumentos).
+-- ESTRATEGIA: Validación y construcción funcional de resultados.
+-- IMPACTO: No destructiva (No modifica el estado global).
+-- =========================================================================
+
+data Color = Rojo | Amarillo | Verde
+    deriving (Show, Eq)
+
+data Estado = EnRojo | EnAmarillo | EnVerde
+    deriving (Show, Eq)
+
+transicion :: Estado -> Color -> (Estado, String)
+transicion colorActual cambiarA =
+    (colorActual, "cambiar-a-" ++ show cambiarA)
+
+    -- =========================================================================
+-- REQUERIMIENTO 2 haskell: Temporizador Automático
+-- NATURALEZA: Pura (Su salida depende exclusivamente de los argumentos).
+-- ESTRATEGIA: Cálculo modular sobre un ciclo semafórico completo.
+-- IMPACTO: No destructiva (No modifica el estado global).
+-- =========================================================================
+
+timer :: Int -> Color
+timer tiempo
+    | instante < 90 = Rojo
+    | instante < 96 = Amarillo
+    | otherwise     = Verde
+  where
+    instante = tiempo `mod` 216
