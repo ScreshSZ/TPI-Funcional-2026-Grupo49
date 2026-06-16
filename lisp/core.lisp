@@ -70,7 +70,7 @@
 
 ;; ========================================================
 ;; FUNCIÓN: duracion-ciclo
-;; NATURALEZA: Pura 
+;; NATURALEZA: impura
 ;; ESTRATEGIA: Simple/Directa
 ;; IMPACTO: No destructiva
 ;; ========================================================
@@ -83,7 +83,7 @@
 
 ;; ========================================================
 ;; FUNCIÓN: recomendacion
-;; NATURALEZA: Pura
+;; NATURALEZA: impura
 ;; ESTRATEGIA: Función predicado + decisión
 ;; IMPACTO: No destructiva
 ;; ========================================================
