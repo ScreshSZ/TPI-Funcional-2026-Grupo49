@@ -103,9 +103,13 @@
 ; IMPACTO: No destructiva
 ; =====================================================================
 (defun ciclos-por-tiempo (minutos duracion-rojo duracion-amarillo duracion-verde)
-  (truncate (/ (* minutos 60) 
-               (duracion-ciclo duracion-rojo duracion-amarillo duracion-verde)))
-  )
+  (if (and (numberp minutos) (not (< minutos 0))
+           (integerp duracion-rojo) (> duracion-rojo 0)
+           (integerp duracion-amarillo) (> duracion-amarillo 0)
+           (integerp duracion-verde) (> duracion-verde 0))
+      (truncate (/ (* minutos 60) 
+                   (duracion-ciclo duracion-rojo duracion-amarillo duracion-verde)))
+       "ERROR: parametros invalidos"))
 
 ;;; =========================================================================
 ;;; REQUERIMIENTO 6: Informe de Distribución Temporal
