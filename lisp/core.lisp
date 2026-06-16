@@ -75,9 +75,10 @@
 ;; IMPACTO: No destructiva
 ;; ========================================================
 (defun duracion-ciclo (duracion-rojo duracion-amarillo duracion-verde)
-
+  (if (and (numberp duracion-rojo) (numberp duracion-amarillo) (numberp duracion-verde))
     (+ duracion-rojo duracion-amarillo duracion-verde)
-
+    (princ "Error de validaacion")
+   )
 )
 
 ;; ========================================================
@@ -87,13 +88,14 @@
 ;; IMPACTO: No destructiva
 ;; ========================================================
 (defun recomendacion (duracion)
-
-    (cond
+  (if (numberp duracion)
+      (cond
         ((< duracion 35) "demasiado-corto")
         ((> duracion 150) "demasiado-largo")
         (t "optimo")
-    )
-    
+      )
+      (princ "Error de validaacion")
+   )
 )
 ;requerimiento 5
 ; =====================================================================
