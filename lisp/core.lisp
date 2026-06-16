@@ -6,26 +6,37 @@
 ;;; =========================================================================
 
 (defun transicion (color-actual cambiar-a)
- (if (member cambiar-a '(rojo amarillo verde))
+  (cond
+    ((not (member color-actual '(rojo amarillo verde)))
+     "Error: Color actual invalido.")
+    ((not (member cambiar-a '(rojo amarillo verde)))
+     (list color-actual 'accion-por-defecto))
+    (t
      (list color-actual
            (concatenate 'string
                         "cambiar-a-"
-                        (symbol-name cambiar-a)))
-     (list color-actual 'accion-por-defecto)))
+                        (symbol-name cambiar-a))))))
 
 
 ;;; =========================================================================
 ;;; REQUERIMIENTO 2: Temporizador Automático
 ;;; NATURALEZA: Pura (Su salida depende exclusivamente de los argumentos).
-;;; ESTRATEGIA: Cálculo modular sobre un ciclo semafórico completo.
+;;; ESTRATEGIA: Validación de entrada y cálculo modular sobre un ciclo semafórico completo.
 ;;; IMPACTO: No destructiva (No modifica el estado global).
 ;;; =========================================================================
 
 (defun timer (tiempo)
   (cond
-    ((< (mod tiempo 216) 90) 'rojo)
-    ((< (mod tiempo 216) 96) 'amarillo)
-    (t 'verde)))
+    ((not (numberp tiempo))
+     "Error: El tiempo debe ser un valor numerico.")
+    ((< tiempo 0)
+     "Error: El tiempo no puede ser negativo.")
+    ((< (mod tiempo 216) 90)
+     'rojo)
+    ((< (mod tiempo 216) 96)
+     'amarillo)
+    (t
+     'verde)))
 
 ;requerimiento 3
 ;(ql:quickload "local-time") correr el local time
