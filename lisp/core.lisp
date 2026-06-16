@@ -22,11 +22,10 @@
 ;;; =========================================================================
 
 (defun timer (tiempo)
- (let ((instante (mod tiempo 216)))
   (cond
-   ((< instante 90) 'rojo)
-   ((< instante 96) 'amarillo)
-   (T 'verde))))
+    ((< (mod tiempo 216) 90) 'rojo)
+    ((< (mod tiempo 216) 96) 'amarillo)
+    (t 'verde)))
 
 ;requerimiento 3
 ;(ql:quickload "local-time") correr el local time
