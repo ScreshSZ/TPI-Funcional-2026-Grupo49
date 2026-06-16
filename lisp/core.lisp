@@ -41,8 +41,8 @@
 ;requerimiento 3
 ;(ql:quickload "local-time") correr el local time
 ;; ========================================================
-;; FUNCIÓN: registrar-cambio
-;; NATURALEZA: Impura (imprime información en la terminal)
+;; FUNCIÓN: registrarCambio
+;; NATURALEZA: Pura (no modifica estado ni imprime, solo retorna un string)
 ;; ESTRATEGIA: Función Simple
 ;; IMPACTO: No destructiva
 ;; ========================================================
