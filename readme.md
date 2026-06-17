@@ -1,7 +1,9 @@
-# 🚀 [TPI-Funcional-2026-Grupo49]
+# 🚀 \[TPI-Funcional-2026-Grupo49]
 
 
-Trabajo Práctico Integrador 2026 - Grupo 49 - Paradigmas y Lenguajes de Programación 
+
+Trabajo Práctico Integrador 2026 - Grupo 49 - Paradigmas y Lenguajes de Programación
+
 
 
 🙎‍♂️ Miño Martin
@@ -10,14 +12,12 @@ Trabajo Práctico Integrador 2026 - Grupo 49 - Paradigmas y Lenguajes de Program
 🙎‍♂️ Zeniquel Santiago de Jesús
 🙎‍♂️ Soto Dante Gaston
 
-Link Youtube:
+Link Youtube:https://www.youtube.com/watch?v=5x7JzoEZcTY
 
 ## 🛠️ Tecnologías utilizadas
 
-*   **Lenguaje principales: Common Lisp | Haskell** 
-*   **Bibliotecas / Frameworks: Quicklisp | local-time** 
+* **Lenguaje principales: Common Lisp | Haskell**
+* **Bibliotecas / Frameworks: Quicklisp | local-time**
 
-###### ###### ###### ###### ###### ###### ###### ###### ###### 
-
-
+###### \###### ###### ###### ###### ###### ###### ######
 
