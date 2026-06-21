@@ -151,10 +151,10 @@
     (progn
         (format t "~%--- PRUEBAS REQ 6: DISTRIBUCION TEMPORAL ---~%")
         (format t "Caso Normal (90s Rojo, 6s Amarillo, 120s Verde):~%")
-        (print (distribucion-porcentual 90 6 120))
+        (print (distribucion-porcentual 93 9 123))
         
         (format t "~%Caso Error (Letras en vez de numeros):~%")
-        (print (distribucion-porcentual 'A 6 120))
+        (print (distribucion-porcentual 'A 9 123))
         
         'PRUEBAS-FINALIZADAS
     )
