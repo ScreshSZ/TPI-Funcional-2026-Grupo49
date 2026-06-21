@@ -66,8 +66,7 @@
                    (symbol-name color-anterior)
                    " a "
                    (symbol-name color-nuevo))
-      "Error: epoch debe ser un número.")
-)
+      "Error: epoch debe ser un número."))
 
 
 ;requerimiento 4
@@ -81,9 +80,7 @@
 (defun duracion-ciclo (duracion-rojo duracion-amarillo duracion-verde)
   (if (and (numberp duracion-rojo) (numberp duracion-amarillo) (numberp duracion-verde))
     (+ duracion-rojo duracion-amarillo duracion-verde)
-    (princ "Error de validaacion")
-   )
-)
+    (princ "Error de validacion")))
 
 ;; ========================================================
 ;; FUNCIÓN: recomendacion
@@ -98,9 +95,8 @@
         ((> duracion 150) "demasiado-largo")
         (t "optimo")
       )
-      (princ "Error de validaacion")
-   )
-)
+      (princ "Error de validacion")))
+
 ;requerimiento 5
 ; =====================================================================
 ; FUNCION: ciclos-por-tiempo
@@ -134,11 +130,7 @@
             (list 
                 (list 'ROJO (float (* (/ t-rojo (duracion-ciclo t-rojo t-amarillo t-verde)) 100)))
                 (list 'VERDE (float (* (/ t-verde (duracion-ciclo t-rojo t-amarillo t-verde)) 100)))
-                (list 'AMARILLO (float (* (/ t-amarillo (duracion-ciclo t-rojo t-amarillo t-verde)) 100)))
-            )
-        )
-    )
-)
+                (list 'AMARILLO (float (* (/ t-amarillo (duracion-ciclo t-rojo t-amarillo t-verde)) 100)))))))
 
 
 ;;; =========================================================================
@@ -156,7 +148,5 @@
         (format t "~%Caso Error (Letras en vez de numeros):~%")
         (print (distribucion-porcentual 'A 9 123))
         
-        'PRUEBAS-FINALIZADAS
-    )
-)
+        'PRUEBAS-FINALIZADAS))
 
