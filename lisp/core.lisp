@@ -47,22 +47,24 @@
 ;; IMPACTO: No destructiva
 ;; ========================================================
 (defun registrar-cambio (epoch color-anterior color-nuevo)
-   (concatenate 'string
-                "["
-                (local-time:format-timestring
-                 nil
-                 (local-time:unix-to-timestamp epoch)
-                 :format '((:year 4) "-"
-                           (:month 2) "-"
-                           (:day 2) " "
-                           (:hour 2) ":"
-                           (:min 2) ":"
-                           (:sec 2)))
-                "]: la luz ha cambiado de "
-                (symbol-name color-anterior)
-                " a "
-                (symbol-name color-nuevo)
-   )
+  (if (numberp epoch)
+      (concatenate 'string
+                   "["
+                   (local-time:format-timestring
+                    nil
+                    (local-time:unix-to-timestamp epoch)
+                    :format
+                    '((:year 4) "-"
+                      (:month 2) "-"
+                      (:day 2) " "
+                      (:hour 2) ":"
+                      (:min 2) ":"
+                      (:sec 2)))
+                   "]: la luz ha cambiado de "
+                   (symbol-name color-anterior)
+                   " a "
+                   (symbol-name color-nuevo))
+      "Error: epoch debe ser un número.")
 )
 
 
