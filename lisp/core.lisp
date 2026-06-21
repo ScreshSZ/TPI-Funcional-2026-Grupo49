@@ -89,7 +89,7 @@
 ;; ESTRATEGIA: Función predicado + decisión
 ;; IMPACTO: No destructiva
 ;; ========================================================
-(defun recomendacion (duracion)
+(defun recomendacion-ciclo (duracion)
   (if (numberp duracion)
       (cond
         ((< duracion 35) "demasiado-corto")
