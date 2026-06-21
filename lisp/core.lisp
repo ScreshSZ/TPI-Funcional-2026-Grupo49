@@ -19,24 +19,26 @@
 
 
 ;;; =========================================================================
-;;; REQUERIMIENTO 2: Temporizador Automático
+;;; REQUERIMIENTO 2: Temporizador Automático (Ciclo 225s e Intermitencia)
+;;; FUNCIÓN: timer
 ;;; NATURALEZA: Pura (Su salida depende exclusivamente de los argumentos).
-;;; ESTRATEGIA: Validación de entrada y cálculo modular sobre un ciclo semafórico completo.
+;;; ESTRATEGIA: Validación y cálculo modular iterativo sobre 225 segundos.
 ;;; IMPACTO: No destructiva (No modifica el estado global).
 ;;; =========================================================================
 
 (defun timer (tiempo)
   (cond
-    ((not (numberp tiempo))
-     "Error: El tiempo debe ser un valor numerico.")
-    ((< tiempo 0)
-     "Error: El tiempo no puede ser negativo.")
-    ((< (mod tiempo 216) 90)
-     'rojo)
-    ((< (mod tiempo 216) 96)
-     'amarillo)
+    ((not (numberp tiempo)) "Error: El tiempo debe ser un valor numerico.")
+    ((< tiempo 0) "Error: El tiempo no puede ser negativo.")
     (t
-     'verde)))
+     (let ((t-mod (mod tiempo 225)))
+       (cond
+         ((< t-mod 90) 'en-rojo)
+         ((< t-mod 93) 'rojo-intermitente)
+         ((< t-mod 213) 'en-verde)
+         ((< t-mod 216) 'verde-intermitente)
+         ((< t-mod 222) 'en-amarillo)
+         (t 'amarillo-intermitente))))))
 
 ;requerimiento 3
 ;(ql:quickload "local-time") correr el local time
