@@ -41,12 +41,12 @@
 ;requerimiento 3
 ;(ql:quickload "local-time") correr el local time
 ;; ========================================================
-;; FUNCIÓN: registrarCambio
+;; FUNCIÓN: registrar-cambio
 ;; NATURALEZA: Pura (no modifica estado ni imprime, solo retorna un string)
 ;; ESTRATEGIA: Función Simple
 ;; IMPACTO: No destructiva
 ;; ========================================================
-(defun registrarCambio (epoch color-anterior color-nuevo)
+(defun registrar-cambio (epoch color-anterior color-nuevo)
    (concatenate 'string
                 "["
                 (local-time:format-timestring
