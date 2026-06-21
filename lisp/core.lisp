@@ -150,7 +150,7 @@
 (defun ejecutar-qa-completo ()
     (progn
         (format t "~%--- PRUEBAS REQ 6: DISTRIBUCION TEMPORAL ---~%")
-        (format t "Caso Normal (90s Rojo, 6s Amarillo, 120s Verde):~%")
+        (format t "Caso Normal (93s Rojo, 9s Amarillo, 123s Verde):~%")
         (print (distribucion-porcentual 93 9 123))
         
         (format t "~%Caso Error (Letras en vez de numeros):~%")
