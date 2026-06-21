@@ -77,9 +77,9 @@
 ;; ESTRATEGIA: Simple/Directa
 ;; IMPACTO: No destructiva
 ;; ========================================================
-(defun duracion-ciclo (duracion-rojo duracion-amarillo duracion-verde)
-  (if (and (numberp duracion-rojo) (numberp duracion-amarillo) (numberp duracion-verde))
-    (+ duracion-rojo duracion-amarillo duracion-verde)
+(defun duracion-ciclo (duracion-rojo duracion-verde duracion-amarillo)
+  (if (and (numberp duracion-rojo) (numberp duracion-verde) (numberp duracion-amarillo))
+    (+ duracion-rojo duracion-verde duracion-amarillo)
     (princ "Error de validacion")))
 
 ;; ========================================================
@@ -104,13 +104,13 @@
 ; ESTRATEGIA DE CONTROL: Orden Superior (truncate)
 ; IMPACTO: No destructiva
 ; =====================================================================
-(defun ciclos-por-tiempo (minutos duracion-rojo duracion-amarillo duracion-verde)
+(defun ciclos-por-tiempo (minutos duracion-rojo duracion-verde duracion-amarillo)
   (if (and (numberp minutos) (not (< minutos 0))
            (integerp duracion-rojo) (> duracion-rojo 0)
-           (integerp duracion-amarillo) (> duracion-amarillo 0)
-           (integerp duracion-verde) (> duracion-verde 0))
+           (integerp duracion-verde) (> duracion-verde 0)
+           (integerp duracion-amarillo) (> duracion-amarillo 0))
       (truncate (/ (* minutos 60) 
-                   (duracion-ciclo duracion-rojo duracion-amarillo duracion-verde)))
+                   (duracion-ciclo duracion-rojo duracion-verde duracion-amarillo)))
        "ERROR: parametros invalidos"))
 
 ;;; =========================================================================
@@ -120,19 +120,17 @@
 ;;; IMPACTO: No destructiva (No modifica el estado global).
 ;;; =========================================================================
 
-(defun distribucion-porcentual (t-rojo t-amarillo t-verde)
-    (cond
-        ((not (and (numberp t-rojo) (numberp t-amarillo) (numberp t-verde)))
-            "Error: Debe ingresar valores numericos en segundos.")
-        ((or (<= t-rojo 0) (<= t-amarillo 0) (<= t-verde 0))
-            "Error: Los tiempos ingresados deben ser mayores a cero.")
-        (T
-            (list 
-                (list 'ROJO (float (* (/ t-rojo (duracion-ciclo t-rojo t-amarillo t-verde)) 100)))
-                (list 'VERDE (float (* (/ t-verde (duracion-ciclo t-rojo t-amarillo t-verde)) 100)))
-                (list 'AMARILLO (float (* (/ t-amarillo (duracion-ciclo t-rojo t-amarillo t-verde)) 100)))))))
-
-
+(defun distribucion-porcentual (t-rojo t-verde t-amarillo)
+  (cond
+    ((not (and (numberp t-rojo) (numberp t-verde) (numberp t-amarillo)))
+     "Error: Debe ingresar valores numericos en segundos.")
+    ((or (<= t-rojo 0) (<= t-verde 0) (<= t-amarillo 0))
+     "Error: Los tiempos ingresados deben ser mayores a cero.")
+    (t
+     (list 
+      (list 'ROJO (float (* (/ t-rojo (duracion-ciclo t-rojo t-verde t-amarillo)) 100)))
+      (list 'VERDE (float (* (/ t-verde (duracion-ciclo t-rojo t-verde t-amarillo)) 100)))
+      (list 'AMARILLO (float (* (/ t-amarillo (duracion-ciclo t-rojo t-verde t-amarillo)) 100)))))))
 ;;; =========================================================================
 ;;; REQUERIMIENTO 7: Aseguramiento de la Calidad (QA Global)
 ;;; FUNCIÓN: ejecutar-qa-completo
@@ -143,10 +141,10 @@
     (progn
         (format t "~%--- PRUEBAS REQ 6: DISTRIBUCION TEMPORAL ---~%")
         (format t "Caso Normal (93s Rojo, 123s Verde, 9s Amarillo):~%")
-        (print (distribucion-porcentual 93 9 123))
+        (print (distribucion-porcentual 93 123 9))
         
         (format t "~%Caso Error (Letras en vez de numeros):~%")
-        (print (distribucion-porcentual 'A 9 123))
+        (print (distribucion-porcentual 'A 123 9))
         
         'PRUEBAS-FINALIZADAS))
 
