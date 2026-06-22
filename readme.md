@@ -12,12 +12,12 @@ Trabajo Práctico Integrador 2026 - Grupo 49 - Paradigmas y Lenguajes de Program
 🙎‍♂️ Zeniquel Santiago de Jesús
 🙎‍♂️ Soto Dante Gaston
 
-Link Youtube:https://www.youtube.com/watch?v=5x7JzoEZcTY
+Link Youtube:https: https://youtu.be/om2ZWoqd5t8
 
 ## 🛠️ Tecnologías utilizadas
 
 * **Lenguaje principales: Common Lisp | Haskell**
 * **Bibliotecas / Frameworks: Quicklisp | local-time**
 
-###### \###### ###### ###### ###### ###### ###### ######
+###### \###### ###### ###### ###### ###### ######
 
